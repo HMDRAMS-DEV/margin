@@ -1,0 +1,88 @@
+import type { FeedArticle } from "@/lib/models";
+
+export const demoArticles: FeedArticle[] = [
+  {
+    id: "demo-1",
+    title: "The Commit Graph Escapes Engineering",
+    author: "Rami Alhamad",
+    publicationId: "action-potential",
+    publicationName: "Action Potential",
+    sourceUrl: "https://www.actionpotential.co/p/the-commit-graph-escapes-engineering",
+    receivedAt: new Date("2026-08-11T14:00:00Z"),
+    oneSentence:
+      "The best record of how a company really thinks may be the trail of small decisions it leaves behind.",
+    threePoints: [
+      "A commit captures a choice, its context, and the person willing to make it.",
+      "That pattern is useful beyond code because most work is now a sequence of revisions.",
+      "Teams get smarter when their history becomes searchable evidence instead of folklore.",
+    ],
+    tenPoints: [
+      "Companies forget why decisions were made.",
+      "Documents preserve outcomes better than reasoning.",
+      "A commit keeps the change beside its explanation.",
+      "Small commits make uncertainty visible early.",
+      "Reverts show which beliefs failed.",
+      "Reviews expose disagreement without rewriting history.",
+      "The same pattern can describe product, policy, and operations.",
+      "Searchable decisions reduce repeated arguments.",
+      "The record matters only if making it stays cheap.",
+      "The deeper idea is simple: progress is a graph, not a folder.",
+    ],
+  },
+  {
+    id: "demo-2",
+    title: "Do Things that Don't Scale",
+    author: "Paul Graham",
+    publicationId: "paul-graham",
+    publicationName: "Essays",
+    sourceUrl: "https://paulgraham.com/ds.html",
+    receivedAt: new Date("2026-08-09T14:00:00Z"),
+    oneSentence:
+      "Startups grow by giving a few people an experience that a large company would consider irrationally personal.",
+    threePoints: [
+      "Founders usually have to recruit their first users by hand.",
+      "Manual work teaches what the eventual product must automate.",
+      "A small group of delighted users is more useful than a large group that barely cares.",
+    ],
+    tenPoints: [
+      "New products rarely spread on their own.",
+      "Founders should recruit users directly.",
+      "Early users deserve unusually close attention.",
+      "Delight creates stronger evidence than polite interest.",
+      "Manual service reveals where software is still weak.",
+      "Narrow markets can be useful starting points.",
+      "A fragile early process is not necessarily a bad business.",
+      "The process can change as the company grows.",
+      "Founders often underestimate what effort can unlock.",
+      "The point is to earn momentum before trying to optimize it.",
+    ],
+  },
+  {
+    id: "demo-3",
+    title: "The Shape of a Week",
+    author: "Maya Chen",
+    publicationId: "field-notes",
+    publicationName: "Field Notes",
+    sourceUrl: "https://example.com/the-shape-of-a-week",
+    receivedAt: new Date("2026-08-07T14:00:00Z"),
+    oneSentence:
+      "Calendars improve when they protect the kind of attention a task needs, not merely the time it might take.",
+    threePoints: [
+      "Deep work and administrative work consume different kinds of energy.",
+      "Grouping similar tasks reduces the cost of repeatedly changing mental context.",
+      "A good week leaves deliberate empty space for work that cannot be predicted.",
+    ],
+    tenPoints: [
+      "Hours are not interchangeable.",
+      "Attention changes across the day.",
+      "Hard problems need protected starts.",
+      "Meetings fracture more time than they occupy.",
+      "Batching lowers the cost of switching contexts.",
+      "Empty blocks absorb real life.",
+      "A weekly plan should state its main bet.",
+      "Everything else should fit around that bet.",
+      "Reviewing the week teaches more than optimizing a template.",
+      "The goal is a useful rhythm, not a full calendar.",
+    ],
+  },
+];
