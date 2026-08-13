@@ -51,13 +51,17 @@ export function parseNewsletterEmail(input: {
   const senderName = senderMatch?.[1].replace(/^"|"$/g, "").trim();
   const hostname = senderAddress.split("@")[1] ?? "unknown";
   const publicationName = senderName || hostname.split(".")[0] || "Newsletter";
+  const sourceUrl = input.html ? findArticleUrl(input.html) : null;
+  const publicationHostname = sourceUrl
+    ? new URL(sourceUrl).hostname.toLowerCase()
+    : senderAddress;
 
   return {
     title: input.subject.replace(/^\s*(re|fwd):\s*/i, "").trim(),
     author: senderName || null,
     publicationName,
-    publicationHostname: hostname,
-    sourceUrl: input.html ? findArticleUrl(input.html) : null,
+    publicationHostname,
+    sourceUrl,
     content: extractArticleText(input.html, input.text),
   };
 }
