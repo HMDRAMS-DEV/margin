@@ -52,32 +52,39 @@ export function ArticleCard({
         </p>
 
         <div
-          className="summaryLevel"
+          className={depth >= 2 ? "summaryLevel open" : "summaryLevel"}
           data-testid="three-points"
-          hidden={depth < 2}
+          aria-hidden={depth < 2}
+          inert={depth < 2 ? true : undefined}
         >
-          <ol className="summaryList threeList">
-            {article.threePoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ol>
+          <div className="summaryLevelInner">
+            <ol className="summaryList threeList">
+              {article.threePoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ol>
+          </div>
         </div>
 
         <div
-          className="summaryLevel"
+          className={depth >= 3 ? "summaryLevel open" : "summaryLevel"}
           data-testid="ten-points"
-          hidden={depth < 3}
+          aria-hidden={depth < 3}
+          inert={depth < 3 ? true : undefined}
         >
-          <ol className="summaryList tenList">
-            {article.tenPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ol>
+          <div className="summaryLevelInner">
+            <ol className="summaryList tenList">
+              {article.tenPoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ol>
+          </div>
         </div>
 
         <div className="articleFooter">
           {depth === 1 ? (
             <button
+              key="three-points"
               className="deepenButton"
               type="button"
               onClick={() => setDepth(2)}
@@ -88,6 +95,7 @@ export function ArticleCard({
           ) : null}
           {depth === 2 ? (
             <button
+              key="ten-details"
               className="deepenButton"
               type="button"
               onClick={() => setDepth(3)}

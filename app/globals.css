@@ -86,6 +86,8 @@ input:focus-visible {
   border-radius: 999px;
   background: var(--red);
   transform: rotate(8deg);
+  transform-origin: center;
+  transition: transform 220ms var(--ease);
 }
 
 .eyebrow {
@@ -127,6 +129,19 @@ input:focus-visible {
   transition: color 150ms ease;
 }
 
+.landingNav .logo,
+.landingNav > div a {
+  animation: riseIn 480ms var(--ease) both;
+}
+
+.landingNav > div a:first-child {
+  animation-delay: 60ms;
+}
+
+.landingNav > div a:last-child {
+  animation-delay: 100ms;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
@@ -138,11 +153,27 @@ input:focus-visible {
 
 .heroCopy h1 {
   max-width: 590px;
-  margin: 20px 0 24px;
+  margin: 0 0 24px;
   font-size: clamp(46px, 6vw, 77px);
   font-weight: 650;
   letter-spacing: -0.068em;
   line-height: 0.97;
+}
+
+.revealLine {
+  display: block;
+  overflow: hidden;
+  padding: 0.08em 0;
+  margin: -0.08em 0;
+}
+
+.revealLine > span {
+  display: block;
+  animation: lineReveal 680ms var(--ease) both;
+}
+
+.revealLine:nth-child(2) > span {
+  animation-delay: 70ms;
 }
 
 .heroLead {
@@ -152,11 +183,13 @@ input:focus-visible {
   font-size: clamp(17px, 1.8vw, 20px);
   line-height: 1.55;
   letter-spacing: -0.015em;
+  animation: riseIn 520ms 140ms var(--ease) both;
 }
 
 .signupForm {
   max-width: 530px;
   margin-top: 34px;
+  animation: riseIn 520ms 200ms var(--ease) both;
 }
 
 .signupControl {
@@ -167,6 +200,13 @@ input:focus-visible {
   border-radius: 13px;
   background: var(--paper);
   box-shadow: 0 8px 28px rgba(28, 28, 24, 0.04);
+  transition: border-color 180ms ease, box-shadow 220ms ease, transform 220ms var(--ease);
+}
+
+.signupControl:focus-within {
+  border-color: #b9b9b2;
+  box-shadow: 0 12px 34px rgba(28, 28, 24, 0.08);
+  transform: translateY(-2px);
 }
 
 .signupControl input {
@@ -211,6 +251,7 @@ input:focus-visible {
   margin: 10px 4px 0;
   color: var(--muted);
   font-size: 12px;
+  animation: statusSwap 180ms var(--ease) both;
 }
 
 .formError {
@@ -219,6 +260,7 @@ input:focus-visible {
 
 .heroDemo {
   position: relative;
+  animation: cardReveal 700ms 180ms var(--ease) both;
 }
 
 .heroDemo::before {
@@ -231,112 +273,13 @@ input:focus-visible {
   filter: blur(3px);
 }
 
-.demoLabel {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 14px 13px 26px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.02em;
-}
-
-.demoLabel span:last-child {
-  text-align: right;
-}
-
-.howItWorks {
-  padding: 116px 0 132px;
-  border-top: 1px solid var(--line);
-}
-
-.howItWorks h2 {
-  margin: 0 0 46px;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 630;
-  letter-spacing: -0.045em;
-}
-
-.howItWorks ol {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 42px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.howItWorks li {
-  padding-top: 17px;
-  border-top: 1px solid var(--ink);
-}
-
-.howItWorks li > span {
-  display: block;
-  margin-bottom: 32px;
-  color: var(--red);
-  font-family: var(--mono);
-  font-size: 11px;
-}
-
-.howItWorks strong {
-  display: block;
-  margin-bottom: 7px;
-  font-size: 16px;
-}
-
-.howItWorks li p {
-  max-width: 270px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.privacyNote {
-  display: grid;
-  grid-template-columns: auto minmax(0, 660px);
-  justify-content: center;
-  gap: 26px;
-  padding: 72px clamp(26px, 8vw, 90px);
-  border-radius: 24px;
-  background: #1b1b1a;
-  color: #fff;
-}
-
-.privacyMark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid #555550;
-  border-radius: 50%;
-  color: #f47b70;
-  font-family: var(--mono);
-}
-
-.privacyNote h2 {
-  margin: 1px 0 10px;
-  font-size: 22px;
-  letter-spacing: -0.025em;
-}
-
-.privacyNote p {
-  margin: 0;
-  color: #b8b8b1;
-  line-height: 1.65;
-}
-
 .landingFooter {
   display: flex;
-  justify-content: space-between;
-  padding: 64px 0 46px;
+  justify-content: flex-end;
+  padding: 8px 0 34px;
   color: var(--muted);
   font-size: 13px;
-}
-
-.landingFooter p {
-  margin: 0;
+  animation: riseIn 440ms 320ms var(--ease) both;
 }
 
 .landingFooter a {
@@ -345,8 +288,39 @@ input:focus-visible {
   text-decoration: none;
 }
 
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(12px) scale(0.985);
+  }
+}
+
+@keyframes statusSwap {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(3px);
+  }
+}
+
 /* Summary card */
 .articleCard {
+  --rail-progress: 0;
   position: relative;
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
@@ -356,7 +330,15 @@ input:focus-visible {
   border-radius: 18px;
   background: var(--paper);
   box-shadow: 0 7px 24px rgba(28, 28, 24, 0.025);
-  transition: border-color 240ms ease, box-shadow 240ms ease;
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms var(--ease);
+}
+
+.articleCard.depth2 {
+  --rail-progress: 0.52;
+}
+
+.articleCard.depth3 {
+  --rail-progress: 1;
 }
 
 .articleCard.featured {
@@ -379,6 +361,18 @@ input:focus-visible {
   width: 2px;
   border-radius: 2px;
   background: var(--soft-line);
+  overflow: hidden;
+}
+
+.railLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--red);
+  transform: scaleY(var(--rail-progress));
+  transform-origin: top;
+  transition: transform 320ms var(--ease);
 }
 
 .railDot {
@@ -409,15 +403,6 @@ input:focus-visible {
   background: var(--red);
   box-shadow: 0 0 0 1px var(--red);
   transform: scale(1.15);
-}
-
-.depth2 .railLine,
-.depth3 .railLine {
-  background: linear-gradient(to bottom, var(--red) 0%, var(--red) 52%, var(--soft-line) 52%);
-}
-
-.depth3 .railLine {
-  background: var(--red);
 }
 
 .articleBody {
@@ -469,30 +454,29 @@ input:focus-visible {
   letter-spacing: -0.008em;
 }
 
-.summaryLevel[hidden] {
-  display: none;
-}
-
 .summaryLevel {
-  animation: unfold 380ms var(--ease) both;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: grid-template-rows 360ms var(--ease), opacity 180ms ease, transform 280ms var(--ease);
 }
 
-@keyframes unfold {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.summaryLevel.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.summaryLevelInner {
+  overflow: hidden;
 }
 
 .summaryList {
   display: grid;
   gap: 11px;
   margin: 24px 0 0;
-  padding: 22px 0 0 20px;
+  padding: 22px 0 0 30px;
   border-top: 1px solid var(--soft-line);
   color: #43433f;
   font-size: 14px;
@@ -500,8 +484,26 @@ input:focus-visible {
 }
 
 .summaryList li {
-  padding-left: 7px;
+  padding-left: 3px;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 180ms ease, transform 220ms var(--ease);
 }
+
+.summaryLevel.open .summaryList li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.summaryLevel.open .summaryList li:nth-child(2) { transition-delay: 30ms; }
+.summaryLevel.open .summaryList li:nth-child(3) { transition-delay: 60ms; }
+.summaryLevel.open .summaryList li:nth-child(4) { transition-delay: 90ms; }
+.summaryLevel.open .summaryList li:nth-child(5) { transition-delay: 120ms; }
+.summaryLevel.open .summaryList li:nth-child(6) { transition-delay: 150ms; }
+.summaryLevel.open .summaryList li:nth-child(7) { transition-delay: 180ms; }
+.summaryLevel.open .summaryList li:nth-child(8) { transition-delay: 210ms; }
+.summaryLevel.open .summaryList li:nth-child(9) { transition-delay: 240ms; }
+.summaryLevel.open .summaryList li:nth-child(10) { transition-delay: 270ms; }
 
 .summaryList li::marker {
   color: var(--red);
@@ -536,6 +538,18 @@ input:focus-visible {
   padding: 2px 0;
 }
 
+.deepenButton {
+  animation: controlSwap 180ms var(--ease) both;
+}
+
+@keyframes controlSwap {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: scale(0.96);
+  }
+}
+
 .chevron {
   width: 14px;
   height: 14px;
@@ -557,6 +571,7 @@ input:focus-visible {
   font-weight: 650;
   text-decoration-color: #9b9b96;
   text-underline-offset: 3px;
+  animation: controlSwap 180ms var(--ease) both;
 }
 
 .collapseButton {
@@ -686,6 +701,10 @@ input:focus-visible {
     color: var(--ink);
   }
 
+  .logo:hover .logoRule {
+    transform: rotate(18deg) scaleY(0.82);
+  }
+
   .signupControl button:hover {
     background: #30302e;
   }
@@ -693,6 +712,7 @@ input:focus-visible {
   .articleCard:hover {
     border-color: #cfcfc9;
     box-shadow: 0 12px 34px rgba(28, 28, 24, 0.045);
+    transform: translateY(-2px);
   }
 
   .deepenButton:hover {
@@ -760,30 +780,6 @@ input:focus-visible {
 
   .signupControl button {
     min-height: 46px;
-  }
-
-  .demoLabel span:last-child {
-    display: none;
-  }
-
-  .howItWorks {
-    padding: 88px 0 100px;
-  }
-
-  .howItWorks ol {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-
-  .howItWorks li > span {
-    margin-bottom: 17px;
-  }
-
-  .privacyNote {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 38px 28px;
-    border-radius: 18px;
   }
 
   .articleCard {

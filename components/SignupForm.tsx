@@ -23,7 +23,7 @@ export function SignupForm() {
       const body = (await response.json()) as { message?: string };
       if (!response.ok) throw new Error(body.message ?? "Could not create your address.");
       setStatus("sent");
-      setMessage("Check your inbox. Your private address is one click away.");
+      setMessage("Check your inbox.");
       event.currentTarget.reset();
     } catch (error) {
       setStatus("error");
@@ -48,15 +48,19 @@ export function SignupForm() {
           required
           disabled={status === "loading"}
         />
-        <button type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "Creating…" : "Create my address"}
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          aria-busy={status === "loading"}
+        >
+          {status === "loading" ? "Creating…" : "Get my address"}
         </button>
       </div>
       <p
         className={`formStatus ${status === "error" ? "formError" : ""}`}
         aria-live="polite"
       >
-        {message || "No password. We’ll email you a secure sign-in link."}
+        {message}
       </p>
     </form>
   );

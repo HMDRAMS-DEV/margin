@@ -11,79 +11,39 @@ export default function HomePage() {
       <nav className="landingNav">
         <Logo />
         <div>
-          <Link href="/demo">Try the demo</Link>
+          <Link href="/demo">Demo</Link>
           <a
             href="https://github.com/HMDRAMS-DEV/margin"
             target="_blank"
             rel="noreferrer"
           >
-            View source
+            GitHub
           </a>
         </div>
       </nav>
 
       <section className="hero">
         <div className="heroCopy">
-          <p className="eyebrow">NEWSLETTERS, DISTILLED</p>
-          <h1>Read the point. Then decide if you want the rest.</h1>
-          <p className="heroLead">
-            Get a private email address for your newsletter subscriptions.
-            Margin turns every issue into one sentence, three points, then ten
-            details.
-          </p>
+          <h1>
+            <span className="revealLine"><span>Read the point.</span></span>
+            <span className="revealLine"><span>Skip the rest.</span></span>
+          </h1>
+          <p className="heroLead">One private email. Every newsletter, distilled.</p>
           <SignupForm />
         </div>
 
         <div className="heroDemo" aria-label="Progressive summary example">
-          <div className="demoLabel">
-            <span>Start small</span>
-            <span>Go deeper only when it earns your attention</span>
-          </div>
           <ArticleCard article={demoArticles[0]} featured />
         </div>
       </section>
 
-      <section className="howItWorks" aria-labelledby="how-heading">
-        <h2 id="how-heading">A calmer reading loop.</h2>
-        <ol>
-          <li>
-            <span>01</span>
-            <strong>Save your address.</strong>
-            <p>Use it when you subscribe to any email newsletter.</p>
-          </li>
-          <li>
-            <span>02</span>
-            <strong>Get one weekly note.</strong>
-            <p>Each issue starts as a single useful sentence.</p>
-          </li>
-          <li>
-            <span>03</span>
-            <strong>Follow your curiosity.</strong>
-            <p>Open three points, ten details, or the original article.</p>
-          </li>
-        </ol>
-      </section>
-
-      <section className="privacyNote">
-        <span className="privacyMark" aria-hidden="true">×</span>
-        <div>
-          <h2>Less inbox, less data.</h2>
-          <p>
-            Margin does not persist newsletter bodies after summarization. It
-            stores the summaries you need, verifies every inbound webhook, and
-            keeps accounts separated with secure sign-in links.
-          </p>
-        </div>
-      </section>
-
       <footer className="landingFooter">
-        <p>Margin is open source.</p>
         <a
           href="https://github.com/HMDRAMS-DEV/margin"
           target="_blank"
           rel="noreferrer"
         >
-          GitHub ↗
+          Open source on GitHub <span aria-hidden="true">↗</span>
         </a>
       </footer>
     </main>
