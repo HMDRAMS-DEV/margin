@@ -26,11 +26,11 @@
     "cheerio": "1.2.0",
     "groq-sdk": "1.5.0",
     "html-to-text": "10.0.0",
-    "next": "16.3.0",
+    "next": "16.3.1",
     "postgres": "3.4.9",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "resend": "6.19.0",
+    "resend": "6.20.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
